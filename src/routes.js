@@ -12,9 +12,13 @@ routes.get('/',(req,res) => {
 
 routes.post('/genres',GenreController.store)
 routes.get('/genres',GenreController.index)
+routes.get('/genres/:id',GenreController.find)
+
 // routes.get('/genres/:id',GenreController.find)
 
 routes.post('/series',SerieControleer.store)
+routes.put('/series',SerieControleer.edit)
+routes.delete('/series',SerieControleer.delete)
 routes.get('/series',SerieControleer.index)
 routes.get('/series/:id',SerieControleer.find)
 

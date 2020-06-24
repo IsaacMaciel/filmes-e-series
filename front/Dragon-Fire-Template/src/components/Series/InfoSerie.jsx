@@ -12,7 +12,6 @@ const InfoSerie = ({ match }) => {
     name: '',
   });
   const [sucess, setSucess] = useState(false);
-  const [mode, setMode] = useState('INFO');
   const [genreId, setGenreId] = useState('');
 
   const [data, setData] = useState({});
@@ -119,25 +118,9 @@ const InfoSerie = ({ match }) => {
         </div>
       </header>
       <div className="container">
-        <button
-          className="btn btn-primary my-3"
-          onClick={() => setMode('EDIT')}
-        >
-          {' '}
-          Editar
-        </button>
       </div>
-      {mode === 'EDIT' && (
         <div className="container">
-          <h1> Novo Série</h1>
-
-          <button
-            className="btn btn-primary my-3"
-            onClick={() => setMode('INFO')}
-          >
-            {' '}
-            Cancelar Edição
-          </button>
+                  <h1> Registrar novo Filme ou Série</h1>
           <form>
             <div className="form-group">
               <label htmlFor="name"> Genero</label>
@@ -197,7 +180,6 @@ const InfoSerie = ({ match }) => {
             </button>
           </form>
         </div>
-      )}
     </div>
   );
 };

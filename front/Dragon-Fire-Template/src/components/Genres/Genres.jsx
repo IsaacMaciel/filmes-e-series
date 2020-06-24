@@ -26,7 +26,6 @@ const Genres = () => {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Gênero</th>
-            <th scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -34,13 +33,6 @@ const Genres = () => {
             <tr>
               <th scope="row">{genre.id}</th>
               <td>{genre.name}</td>
-              <td>
-                <Link to={`/genres/${genre.id}`}>
-                  <button className="btn-look">
-                    <FiSearch color="#fff" />
-                  </button>
-                </Link>
-              </td>
             </tr>
           ))}
         </tbody>

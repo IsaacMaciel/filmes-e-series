@@ -2,6 +2,8 @@ const Serie = require('../models/Series');
 const Genre = require('../models/Genre');
 const { response } = require('express');
 
+
+
 module.exports = {
     async store(req,res) {
         try {
@@ -47,6 +49,7 @@ module.exports = {
 
       const serie =  await Serie.findByPk(id)
 
+
       return res.json(serie);
 
     },
@@ -54,5 +57,35 @@ module.exports = {
         const allSerie = await Serie.findAll();
         
         return res.json(allSerie)
+    },
+    async edit (req,res) {
+        try {
+            const { id, status, genre_id } = req.body;
+            const serieUpdate = Serie.update({status,genre_id},{
+                where: {
+                    id
+                }
+            })
+    
+            return res.json({sucess: true})
+            
+        } catch (error) {
+            return res.json(error)
+        }
+    },
+
+    async delete (req,res) {
+        try {
+            const { id } = req.params;
+            await Serie.destroy({
+                where: {
+                    id
+                }
+            })
+            return res.json({sucess: true})
+            
+        } catch (error) {
+            return res.json(error)
+        }
     }
 }

@@ -12,7 +12,6 @@ const InfoSerie = ({ match }) => {
     name: '',
   });
   const [sucess, setSucess] = useState(false);
-  const [mode, setMode] = useState('INFO');
   const [genreId, setGenreId] = useState('');
 
   const [data, setData] = useState([]);
@@ -20,6 +19,7 @@ const InfoSerie = ({ match }) => {
   useEffect(() => {
     api.get(`/series/${id}`).then((res) => {
       setData(res.data);
+      setForm(res.data)
     });
   }, []);
 
@@ -66,6 +66,17 @@ const InfoSerie = ({ match }) => {
     setSucess(true);
   };
 
+  const destroy = () => {
+    api
+    .delete(`/series`,{
+      id:data.id
+    })
+    .then(
+      alert('Série Deletada com sucesso')
+    )
+  }
+
+  console.log(data.id)
   // if (sucess) {
   //     return <Redirect to='/series'/>
   // }
@@ -103,28 +114,15 @@ const InfoSerie = ({ match }) => {
         </div>
       </header>
       <div className="container">
-        <button
-          className="btn btn-primary my-3"
-          onClick={() => setMode('EDIT')}
-        >
-          {' '}
-          Editar
-        </button>
+  
       </div>
-      {mode === 'EDIT' && (
         <div className="container">
-          <h1> Novo Série</h1>
+        <h1> Editar novo Filme ou Série</h1>
+          
 
-          <button
-            className="btn btn-primary my-3"
-            onClick={() => setMode('INFO')}
-          >
-            {' '}
-            Cancelar Edição
-          </button>
           <form>
             <div className="form-group">
-              <label htmlFor="name"> Genero</label>
+              <label htmlFor="name"> Gênero</label>
               <select
                 onChange={genre_set}
                 defaultValue={data.genre_id}
@@ -132,13 +130,16 @@ const InfoSerie = ({ match }) => {
               >
                 <option value=""> Selecione um gênero...</option>
                 {genres.map((genre) => (
-                  <option key={genre.id} value={genre.id}>
+                  <option key={genre.id} selected={genre.id === data.genre_id} value={genre.id}>
                     {genre.name}
                   </option>
                 ))}
               </select>
             </div>
 
+            <div className="item">
+                  Status:
+            </div>   
             <div className="form-check">
               <input
                 type="radio"
@@ -154,7 +155,7 @@ const InfoSerie = ({ match }) => {
                 Assistido
               </label>
             </div>
-
+               
             <div className="form-check">
               <input
                 type="radio"
@@ -177,11 +178,18 @@ const InfoSerie = ({ match }) => {
               className="btn btn-primary my-3"
             >
               {' '}
-              Registrar{' '}
+              Editar{' '}
+            </button>
+            <button
+              onClick={destroy}
+              type="submit"
+              className="btn btn-primary my-3"
+            >
+              {' '}
+              Deletar{' '}
             </button>
           </form>
         </div>
-      )}
     </div>
   );
 };

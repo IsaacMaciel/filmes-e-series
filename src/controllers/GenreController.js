@@ -18,9 +18,9 @@ module.exports = {
     },
 
     async find (req,res) {
-        const { genre_id } = req.params;
+        const { id } = req.params;
 
-        const seriesForGender = await Genre.findByPk(genre_id,{include: { association: 'genre'}})
+        const seriesForGender = await Genre.findByPk(id,{include: { association: 'genre_for_serie'}})
  
          
          if(!seriesForGender) {

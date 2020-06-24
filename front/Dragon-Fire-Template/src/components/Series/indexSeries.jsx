@@ -23,6 +23,21 @@ const IndexSerie = () => {
     });
   }, []);
 
+
+async function filterGenre (id) {
+  if(id){
+    api.get(`/genres/${id}`)
+    .then( (res) => {
+        setData(res.data.genre_for_serie)
+    })
+  } else {
+    api.get('/series')
+    .then( (res) => {
+      setData(res.data)
+    })
+  }
+}
+
   const [genres, setGenres] = useState([]);
   useEffect(() => {
     api.get('/genres/').then((res) => {
@@ -39,6 +54,14 @@ const IndexSerie = () => {
     <div className="container">
       <div className="header">
         <h3>Gêneros</h3>
+        <div className="menu">
+        <button type="button" onClick={() => filterGenre('')} class="btn btn-secondary btn-sm mr-2 p-2"> Todos </button>
+          {genres.map((genre)=>(
+            <button type="button" onClick={() => filterGenre(genre.id)} class="btn btn-secondary btn-sm mr-2 p-2">{genre.name}</button>
+          ))}
+         
+        </div>
+
         <Link to="/series/add">
           {' '}
           <button className="btn-add"> Adicionar Série/Filme</button>{' '}
@@ -67,7 +90,7 @@ const IndexSerie = () => {
                 )}
               </CardText>
               <Link to={`/series/${serie.id}`}>
-                <Button style={{ backgroundColor: '#f0f' }}> Editar</Button>
+                <Button style={{ backgroundColor: '#36393f',width: '100%' }}> Editar</Button>
               </Link>
             </CardBody>
           </Card>
