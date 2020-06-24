@@ -1,0 +1,72 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
+
+
+
+.container-search {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.cards-container {
+  padding:20px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+  gap: 10px;
+  position: relative;
+}
+
+.card-container {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  transition: 0.3s;
+}
+.card-container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-image {
+
+ height: 100%;
+ width: 100%;
+ box-sizing: border-box;
+}
+.card-img-top {
+  width: 213px;
+  height: 319px;
+}
+
+.card-title {
+  height: 48px;
+  margin-bottom: 10px;
+  font-family: Ubuntu;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.card-footer {
+  margin-top: 10px;
+}
+
+
+.button-look{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+
+  width: 100%;
+  background-color: #35e567;
+  border-radius: 4px;
+  height: 50px;
+  border: none;
+}
+.button-look:hover{
+  opacity:0.7;
+}

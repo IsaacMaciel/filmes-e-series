@@ -1,0 +1,31 @@
+.container-nav {
+  margin-bottom: 30px;
+}
+.background-Header {
+  background-color: #36393f;
+}
+
+.header {
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.btn-add{
+  padding:8px 4px;
+  color:white;
+  border-radius: 4px;
+  background-color: #36393f;
+
+}
+
+.btn-look,.btn-delete {
+  background-color: #35e567;
+  border-radius: 4px;
+  width: 50px;
+  border: none;
+  margin-right:10px;
+  padding:4px 2px;
+}
+.btn-delete {
+  background-color: #eb1e25;
+}
