@@ -20,9 +20,11 @@ module.exports = {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     },
-    genre: {
+    poster:{
       type: Sequelize.STRING,
-      allowNull: false,     
+    },
+    background:{
+      type:Sequelize.STRING
     },
      overview:{
        type: Sequelize.STRING,

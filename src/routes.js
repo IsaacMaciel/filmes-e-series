@@ -10,9 +10,13 @@ routes.get('/',(req,res) => {
     })
 })
 
-routes.get('/genres',GenreController.index)
 routes.post('/genres',GenreController.store)
+routes.get('/genres',GenreController.index)
+// routes.get('/genres/:id',GenreController.find)
 
 routes.post('/series',SerieControleer.store)
+routes.get('/series',SerieControleer.index)
+routes.get('/series/:id',SerieControleer.find)
+
 
 module.exports = routes;
